@@ -2,7 +2,7 @@
 
 A squad of robotic rovers to be landed by NASA on a plateau on Mars
 
-## Available Scripts
+## How to Run the App
 
 In the project directory, you can run:
 

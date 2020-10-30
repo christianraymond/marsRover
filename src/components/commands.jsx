@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Mars from "./mars";
-import Menu from "./menuBar/menu";
-import Message from "./menuBar/Mesaage";
+import NasaLogo from "./images/nasa.jpg";
+import { FaHandPointDown } from "react-icons/fa";
 
 class commmands extends Component {
   state = {
@@ -17,7 +17,7 @@ class commmands extends Component {
     });
   };
 
-  runSample = (e) => {
+  runInputValue = (e) => {
     this.setState({
       commands: e.target.value,
     });
@@ -25,7 +25,7 @@ class commmands extends Component {
 
   execute = () => {
     let startPosition = this.startInput.value;
-    if (/^[0-4][0-4][NEWS]$/.test(startPosition)) {
+    if (/^[0-4][0-4][NEWS]$/.test(startPosition)) { //Using Reg Expression to avoid any sort of input(command) to be given to the Rover
       this.setState({
         execute: true,
         commandsToExecute: this.state.commands,
@@ -36,7 +36,7 @@ class commmands extends Component {
     }
   };
 
-  clear = () => {
+  clear = () => { //Set state to initial state
     this.setState({
       commands: "",
       execute: false,
@@ -59,20 +59,24 @@ class commmands extends Component {
     position = position.split("").join(" ");
     return (
       <div className="container">
-        <Menu />
-        <div className="app">
-          <div className="app__container">
+        <div className="row">
+          <div className="col-xs-1">
+            <img src={NasaLogo} />
+          </div>
+          <div className="col">
+            <h2>
+              Rover Navigator <FaHandPointDown />
+            </h2>
             <div className={`control-panel`}>
               <div className={"start-position"}>
-                <label htmlFor="startPosition">Rover Starting Position:</label>
-                {/*which means the rover is in the bottom left corner and facing North. */}
+                <label htmlFor="startPosition">Rover starting position:</label>
                 <input
                   type="text"
                   id="startPosition"
                   maxLength={3}
                   required
                   pattern={"^[0-4][0-4][NEWS]$"}
-                  defaultValue={"00N"}
+                  defaultValue={"00N"} //This means rover is at the bottom left facing North
                   onBlur={this.validateStartPosition}
                   ref={(elm) => {
                     this.startInput = elm;
@@ -81,51 +85,55 @@ class commmands extends Component {
               </div>
               <div className="commands">
                 <button value="M" onClick={this.addCommand}>
-                  Move
+                  M
                 </button>
                 <button value="L" onClick={this.addCommand}>
-                  Left
+                  L
                 </button>
                 <button value="R" onClick={this.addCommand}>
-                  Right
+                  R
                 </button>
               </div>
               <div className="execution">
                 <button onClick={this.clear} className="secondary">
-                  ✖
+                  Clear
                 </button>
                 <input type="text" readOnly value={this.state.commands} />
                 <button className={"cta"} onClick={this.execute}>
-                  Execute
+                  Submit
                 </button>
               </div>
               <div className="samples">
                 <label>Inputs: </label>
                 <ul>
                   <li>
-                    <button value={"MMRMMLMMRM"} onClick={this.runSample}>
-                      MMRMMLMMRM
+                    <button value={"RMMMLMRMLM"} onClick={this.runInputValue}>
+                    RMMMLMRMLM 
                     </button>
                   </li>
                   <li>
-                    <button value={"RMMMLMRMLM"} onClick={this.runSample}>
-                      RMMMLMRMLM
+                    <button value={"MMRMMLMMRM"} onClick={this.runInputValue}>
+                      MMRMMLMMRM
                     </button>
                   </li>
                 </ul>
               </div>
             </div>
-            <Mars
-              size={5}
-              position={position}
-              commands={this.state.commandsToExecute}
-              execute={this.state.execute}
-              onDone={this.stopExecute}
-            />
           </div>
-        </div>
-        <div className="app__description">
-          <Message />
+          <div className="col">
+            <div className="mars-content">
+              <h2>
+                Mars Plateau <FaHandPointDown />
+              </h2>
+              <Mars
+                size={5}
+                position={position}
+                commands={this.state.commandsToExecute}
+                execute={this.state.execute}
+                onDone={this.stopExecute}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

@@ -78,6 +78,8 @@ class Mars extends React.Component {
       setTimeout(this.run.bind(this), 500);
     });
   };
+// MOVE SOME OF THE CLASS RELATED TO THE ROVER INISDE THE ROVER COMPONENTS
+// HAVE A SEPARATE CLASS FOR EXECUTE AND JUST INSTATIATE INSIDE THE ROVER
 
   run = () => {
     let ops = this.state.ops.slice();
