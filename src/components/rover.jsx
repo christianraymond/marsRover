@@ -4,11 +4,11 @@ import { FaMarsStrokeV } from 'react-icons/fa';
 
 class Rover extends React.Component {
   render() {
-    const { facing, ghost } = this.props;
+    const { facingPosition, ghost } = this.props;
     return (
-      <span className={`rover ${facing} ${ghost ? "ghost" : ""} `}><FaMarsStrokeV/></span>
+      <span className={`rover ${facingPosition} ${ghost ? "ghost" : ""} `}><FaMarsStrokeV/></span>
     );
   }
 }
 
-export default Rover;
+export default Rover; 

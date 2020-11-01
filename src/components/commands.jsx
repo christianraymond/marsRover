@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Mars from "./mars";
+import Coordinator from "./coordinator";
 import NasaLogo from "./images/nasa.jpg";
 import { FaHandPointDown } from "react-icons/fa";
 
@@ -67,8 +67,8 @@ class commmands extends Component {
             <h2>
               Rover Navigator <FaHandPointDown />
             </h2>
-            <div className={`control-panel`}>
-              <div className={"start-position"}>
+            <div className='control-panel'>
+              <div className="start-position">
                 <label htmlFor="startPosition">Rover starting position:</label>
                 <input
                   type="text"
@@ -76,7 +76,7 @@ class commmands extends Component {
                   maxLength={3}
                   required
                   pattern={"^[0-4][0-4][NEWS]$"}
-                  defaultValue={"00N"} //This means rover is at the bottom left facing North
+                  defaultValue={"00N"} //This means the rover is at the bottom left facing North
                   onBlur={this.validateStartPosition}
                   ref={(elm) => {
                     this.startInput = elm;
@@ -104,7 +104,7 @@ class commmands extends Component {
                 </button>
               </div>
               <div className="samples">
-                <label>Inputs: </label>
+              <label  htmlFor="startPosition">Inputs:</label>
                 <ul>
                   <li>
                     <button value={"RMMMLMRMLM"} onClick={this.runInputValue}>
@@ -125,7 +125,7 @@ class commmands extends Component {
               <h2>
                 Mars Plateau <FaHandPointDown />
               </h2>
-              <Mars
+              <Coordinator
                 size={5}
                 position={position}
                 commands={this.state.commandsToExecute}
@@ -136,7 +136,7 @@ class commmands extends Component {
           </div>
         </div>
       </div>
-    );
+    ); 
   }
 }
 

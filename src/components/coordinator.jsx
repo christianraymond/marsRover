@@ -1,6 +1,9 @@
 import React from "react";
 import Rover from "./rover";
 
+//Summary
+//Manupulation of rover position
+
 const MOVE_VECTOR = {
   S: [0, -1],
   W: [-1, 0],
@@ -22,13 +25,13 @@ const RIGHT_TURNS_MAP = {
   W: "N",
 };
 
-class Mars extends React.Component {
+class Coordinator extends React.Component {
   initialState = {
     start: null,
     end: null,
     ops: [],
     position: "0-0",
-    facing: "N",
+    facingPosition: "N",
     path: null,
     error: null,
   };
@@ -41,7 +44,7 @@ class Mars extends React.Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) { //Rename 'componentWillReceiveProps' to UNSAFE_componentWillReceiveProps to suppress "Warning: componentWillReceiveProps has been renamed"
     this.reset(() => {
       this.process(nextProps);
     });
@@ -61,7 +64,7 @@ class Mars extends React.Component {
         {
           start: parts[0] + "-" + parts[1],
           position: parts[0] + "-" + parts[1],
-          facing: parts[2],
+          facingPosition: parts[2],
         },
         () => {
           if (props.execute) {
@@ -78,27 +81,31 @@ class Mars extends React.Component {
       setTimeout(this.run.bind(this), 500);
     });
   };
-// MOVE SOME OF THE CLASS RELATED TO THE ROVER INISDE THE ROVER COMPONENTS
-// HAVE A SEPARATE CLASS FOR EXECUTE AND JUST INSTATIATE INSIDE THE ROVER
+
+  /// <summary>
+  /// Rover move orientation
+  /// //In order to control a rover, NASA sends a simple string of letters.
+  /// The possible letters are 'L', 'R' and 'M'. 'L' and 'R' makes the rover spin 90 degrees left or right respectively
+  /// </summary>
 
   run = () => {
     let ops = this.state.ops.slice();
-    let { position, path, facing } = this.state;
+    let { position, path, facingPosition } = this.state;
     path = path || {};
-    path[position] = facing;
+    path[position] = facingPosition;
     let op = ops.shift();
     let newPosition = {};
     if (op === "L") {
-      newPosition = this.turnRoverLeft();
+      newPosition = this.spinRover(); //Leter 'L' makes the rover spin 90 degrees right or left
     } else if (op === "R") {
-      newPosition = this.turnRoverRight();
+      newPosition = this.spinRover90Degree();//Leter 'R' makes the rover spin 90 degrees right or left
     } else if (op === "M") {
       newPosition = this.moveRoverForward();
     } else {
       console.log("Invalid command");
     }
     if (newPosition.error) {
-      alert("Can not move beyond the boundaries of Mars");
+      alert("Cannot move outside of Mars");
     }
     this.setState(
       Object.assign(this.state, {
@@ -120,8 +127,8 @@ class Mars extends React.Component {
 
   moveRoverForward = () => {
     const { size } = this.props;
-    const { position, facing } = this.state;
-    const moveVector = MOVE_VECTOR[facing];
+    const { position, facingPosition } = this.state;
+    const moveVector = MOVE_VECTOR[facingPosition];
     const pos = position.split("-").map(Number);
     const x = pos[0] + moveVector[0];
     const y = pos[1] + moveVector[1];
@@ -133,23 +140,23 @@ class Mars extends React.Component {
     };
   };
 
-  turnRoverLeft = () => {
-    const { facing } = this.state;
+  spinRover = () => {
+    const { facingPosition } = this.state;
     return {
-      facing: LEFT_TURNS_MAP[facing],
+      facingPosition: LEFT_TURNS_MAP[facingPosition],
     };
   };
 
-  turnRoverRight = () => {
-    const { facing } = this.state;
+  spinRover90Degree = () => {
+    const { facingPosition } = this.state;
     return {
-      facing: RIGHT_TURNS_MAP[facing],
+      facingPosition: RIGHT_TURNS_MAP[facingPosition],
     };
   };
 
   render() {
     const { size } = this.props;
-    let { position, facing, path } = this.state;
+    let { position, facingPosition, path } = this.state;
     path = path || {};
     let cells = [];
     for (let i = size - 1; i >= 0; i--) {
@@ -175,10 +182,10 @@ class Mars extends React.Component {
           }
 
           if (position === cell) {
-            roverElm = <Rover facing={facing} />;
+            roverElm = <Rover facingPosition={facingPosition} />;
           } else {
             roverPath = path[cell] ? (
-              <Rover facing={path[cell]} ghost={true} />
+              <Rover facingPosition={path[cell]} ghost={true} />
             ) : null;
           }
 
@@ -197,4 +204,4 @@ class Mars extends React.Component {
   }
 }
 
-export default Mars;
+export default Coordinator;
