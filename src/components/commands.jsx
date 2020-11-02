@@ -121,6 +121,19 @@ class commmands extends Component {
                 </ul>
               </div>
             </div>
+            &nbsp;
+            <div className="description">
+              <h4>How to give command to the rover</h4>&nbsp;
+              <ul className="usage-description">
+                <li>For a different starting position: edit 00N</li>
+                <li>Click M to move the rover, R, L to turn right or left</li>
+                <li>Click on RMMMLMRMLM or MMRMMLMMRM to move the rover</li>
+                <li>Click Submit after each selection of direction</li>
+                <li>Clear will remove current input and start over</li>
+                <li>You'll get a warning incase you give the rover a wrong command</li>
+              </ul>
+              <span>We hope this make sense, we're working hard to improve our user experince</span>
+            </div>
           </div>
           <div className="col">
             <div className="mars-content">
