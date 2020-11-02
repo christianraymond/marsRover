@@ -85,6 +85,11 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -142,8 +147,7 @@ html {
 #root {
   font-size: 1em;
   background-size: cover;
-  background-image: url('../components/images/m-liveview.png');
-  /* background-image: url('../components/images/marsview.jpg'); */
+  background-image: url('../components/images/marsview.jpg'); 
   min-width: 100vw;
   min-height: 100vh;
   color: #dadada;
@@ -161,7 +165,7 @@ html {
 }
 .control-panel {
   position: relative;
-  background-color:#fafafa;
+  background-color: #e8e8e8;
   color: #212121;
   margin: 20px 0;
   padding: 10px;
@@ -199,7 +203,6 @@ html {
 
 .control-panel button {
   font-size: 1rem;
-  background-color:#663614;;
   color: #212121;
   border-radius: 2px;
   border: none;
@@ -207,17 +210,18 @@ html {
 }
 
 .control-panel button.cta {
-  background-color: #3f5536;
+  background-color:#68b3ff;
   color: #dcedc8;
   border-radius: 25px;
   outline: none;
 }
 
 .control-panel input[type="text"] {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  border: 0;
-  background-color:#663614;
-  color: #fff;
+   font-size: 12px;
+  color: darkgrey;
+  border: 1px solid #f44336;
+  outline: none;
+  background-color: #efefef;
   letter-spacing: 2pt;
 }
 
@@ -237,7 +241,7 @@ img{
   box-shadow: 0 22px 33px #ccc;
 }
 .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto{
-  background-color: black !important;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 10px;
   margin-top: 20px;
 }
@@ -246,7 +250,7 @@ img{
   display: grid;
   align-items: center;
   justify-items: center;
-  background-color: #663614;
+  background-color:#b8b3b3;
   transition: background 0.2s;
   min-height: 70px;
 }
@@ -293,7 +297,7 @@ img{
 .rover {
   font-size: 3rem;
   transition: all 0.1s;
-  color: black;
+  color: #ccc;
   z-index: 1;
 }
 
@@ -353,6 +357,7 @@ img{
 
 .samples button {
   background: none;
+  outline: none;
   border-bottom: 1px solid;
   cursor: pointer;
   font-size: 0.8rem;

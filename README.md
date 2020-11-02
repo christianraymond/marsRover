@@ -13,9 +13,9 @@ Assume that the square directly North from (x, y) is (x, y+1).
 
 The application is a React Web Application written in React JavaScript, HTML and CSS.
 
-clone the directory at https://github.com/christianraymond/marsRover,
-cd in marsRover,
-run npm install
+clone the directory at https://github.com/christianraymond/marsRover, <br/>
+cd in marsRover, <br/>
+run npm install <br/>
 
 Once in the project directory, you can run:
 
@@ -29,9 +29,9 @@ You will also see any lint errors in the console.
 
 ## How To run the Unit Test
 
-- For unit Test, I choose Jest which is a a JavaScript testing framework maintained by Facebook
+- For Unit Test, I choose Jest which is a a JavaScript testing framework maintained by Facebook
   - Function from the class MarsRover App were used for testing, as an example of unit testing
-  - Find the written tests in 'marsrover.test.jsx' and 'App.test.jsx'
+  - Find the written tests in "marsrover.test.jsx" and "App.test.jsx"
 
  ```yarn test```
 
@@ -47,8 +47,9 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 
 ## Design Explanation
 
-I have programmed my solution to following object oriented and functional programming structure.
-I built the app to the best of my ability, I however believe that there are things to learn and to improve, things I'd like to improve and learn include ```BEM CSS``` a popular naming convention for classes in HTML and CSS methodology, and maybe some ```clean code design principles...``` These I'm willing to learn and get good at them. <br/>
+I have programmed my solution following object oriented and functional programming structure. <br/>
+I built the app to the best of my ability, I however believe that there are things to learn and to improve. <br/> Things I'd like to improve and learn include ```BEM CSS``` a popular naming convention for classes in HTML and CSS methodology, and maybe some ```clean code design principles...``` These I'm willing to learn and get good at them <br/>
+Also, as developer, we learn eveyday, any feedback will help me improve my skills and this solution in the future.
 
 
 The project consist of:
