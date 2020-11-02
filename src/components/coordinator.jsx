@@ -44,7 +44,8 @@ class Coordinator extends React.Component {
     });
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) { //Rename 'componentWillReceiveProps' to UNSAFE_componentWillReceiveProps to suppress "Warning: componentWillReceiveProps has been renamed"
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    //Rename 'componentWillReceiveProps' to UNSAFE_componentWillReceiveProps to suppress "Warning: componentWillReceiveProps has been renamed"
     this.reset(() => {
       this.process(nextProps);
     });
@@ -98,7 +99,7 @@ class Coordinator extends React.Component {
     if (op === "L") {
       newPosition = this.spinRover(); //Leter 'L' makes the rover spin 90 degrees right or left
     } else if (op === "R") {
-      newPosition = this.spinRover90Degree();//Leter 'R' makes the rover spin 90 degrees right or left
+      newPosition = this.spinRover90Degree(); //Leter 'R' makes the rover spin 90 degrees right or left
     } else if (op === "M") {
       newPosition = this.moveRoverForward();
     } else {

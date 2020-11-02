@@ -25,7 +25,8 @@ class commmands extends Component {
 
   execute = () => {
     let startPosition = this.startInput.value;
-    if (/^[0-4][0-4][NEWS]$/.test(startPosition)) { //Using Reg Expression to avoid any sort of input(command) to be given to the Rover
+    if (/^[0-4][0-4][NEWS]$/.test(startPosition)) {
+      //Using Reg Expression to avoid any sort of input(command) to be given to the Rover
       this.setState({
         execute: true,
         commandsToExecute: this.state.commands,
@@ -36,7 +37,8 @@ class commmands extends Component {
     }
   };
 
-  clear = () => { //Set state to initial state
+  clear = () => {
+    //Set state to initial state
     this.setState({
       commands: "",
       execute: false,
@@ -67,7 +69,7 @@ class commmands extends Component {
             <h2>
               Rover Navigator <FaHandPointDown />
             </h2>
-            <div className='control-panel'>
+            <div className="control-panel">
               <div className="start-position">
                 <label htmlFor="startPosition">Rover starting position:</label>
                 <input
@@ -104,11 +106,11 @@ class commmands extends Component {
                 </button>
               </div>
               <div className="samples">
-              <label  htmlFor="startPosition">Inputs:</label>
+                <label htmlFor="startPosition">Inputs:</label>
                 <ul>
                   <li>
                     <button value={"RMMMLMRMLM"} onClick={this.runInputValue}>
-                    RMMMLMRMLM 
+                      RMMMLMRMLM
                     </button>
                   </li>
                   <li>
@@ -136,7 +138,7 @@ class commmands extends Component {
           </div>
         </div>
       </div>
-    ); 
+    );
   }
 }
 

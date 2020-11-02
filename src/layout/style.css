@@ -91,6 +91,10 @@ video {
     Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
     sans-serif;
 }
+h1,h2,h3{
+  text-align: center;
+  font-family: 'Baloo Tamma', cursive;
+}
 
 /* HTML5 display-role reset for older browsers */
 article,
@@ -382,3 +386,5 @@ button.secondary {
   font-size: 0.8rem;
   background: none;
 }
+
+
